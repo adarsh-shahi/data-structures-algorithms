@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class insertionSort {
   public static void main(String[] args) {
-    System.out.println(Arrays.toString(insertion(new int[] { 5, 4, 3, 2, 6 })));
+    System.out.println(Arrays.toString(insertion2(new int[] { 12, 11 ,13, 5, 6})));
   }
 
   static int[] insertion(int[] array) {
@@ -17,6 +17,20 @@ public class insertionSort {
             array[j] = array[j - 1] ^ array[j];
             array[j - 1] = array[j - 1] ^ array[j];
           }
+        }
+      }
+    }
+    return array;
+  }
+
+
+  static int[] insertion2(int[] array){
+    for (int i = 1; i < array.length; i++) {
+      for (int j = i; j > 0; j--) {
+        if(array[j] < array[j - 1]){
+            array[j - 1] = array[j] ^ array[j - 1];
+            array[j] = array[j - 1] ^ array[j];
+            array[j - 1] = array[j - 1] ^ array[j];
         }
       }
     }
