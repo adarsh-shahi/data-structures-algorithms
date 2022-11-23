@@ -32,6 +32,7 @@ public class insertionSort {
             array[j] = array[j - 1] ^ array[j];
             array[j - 1] = array[j - 1] ^ array[j];
         }
+        else break;   // as left part is already sorted no need to check
       }
     }
     return array;
