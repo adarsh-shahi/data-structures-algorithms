@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class recursion {
     public static void main(String[] args) {
-        printFirstSubsequence(new int[]{1, 2, 3, 2}, 0, new ArrayList<>(), 3,0);
+        System.out.println(countSubsequencesSum(new int[]{1, 2, 3, 2}, 0, new ArrayList<>(), 5,0));
     }
 
     static void subsequences(int[] array, int currentIndex, ArrayList<Integer> ans) {
@@ -35,6 +35,21 @@ public class recursion {
         if (printFirstSubsequence(array, currentIndex + 1, ans, k, sum)) return true;
         return false;
     }
+
+    static int countSubsequencesSum(int[] array, int i, ArrayList<Integer> ans, int k, int sum){
+        if(i == array.length){
+            if (sum == k) {
+                return 1;
+            }
+            return 0;
+        }
+        ans.add(array[i]);
+        int a = countSubsequencesSum(array, i + 1, ans, k, sum + array[i]);
+        ans.remove(ans.size() - 1);
+        int b = countSubsequencesSum(array, i + 1, ans, k, sum);
+        return a + b;
+    }
+
 
 //    static void subsequencesEqualToSum(int[] array, int sum, int k, int i, ArrayList<Integer> ans) {
 //        if (sum == k) {
